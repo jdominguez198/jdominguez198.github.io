@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ${{env.working-directory}}
-        run: yarn
+        run: yarn install --production --ignore-scripts
 
       - name: Generate
         working-directory: ${{env.working-directory}}
