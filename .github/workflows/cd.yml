@@ -23,14 +23,16 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Install dependencies
+        working-directory: ${{env.working-directory}}
         run: yarn
 
       - name: Generate
+        working-directory: ${{env.working-directory}}
         run: yarn run generate
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./app/dist
 
