@@ -1,0 +1,87 @@
+.repositories {
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &-item {
+      $list-item: &;
+
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 15px 15px 10px 15px;
+      background: var(--background-color-inner-primary);
+      border-radius: 5px;
+
+      &-link {
+        text-decoration: none;
+        color: var(--text-color-primary);
+      }
+
+      &-title {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+      }
+
+
+      &:hover {
+        cursor: pointer;
+
+        #{ $list-item }-title {
+          color: var(--text-color-highlight-primary);
+        }
+      }
+    }
+  }
+
+  &__languages {
+    display: flex;
+    flex-direction: column;
+
+    &-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+
+      &-item {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        margin: 0 0 5px 0;
+        padding: 0;
+
+        i {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          border-radius: 10px;
+          margin: 0 5px 0 0;
+        }
+
+        & + & {
+          padding: 0 0 0 10px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 768px) {
+  .repositories {
+    &__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

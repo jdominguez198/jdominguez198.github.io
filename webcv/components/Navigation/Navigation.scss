@@ -1,0 +1,50 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__sections {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__section-item {
+    margin: 0;
+    padding: 5px 0;
+
+    a {
+      text-decoration: none;
+      color: var(--text-color-primary);
+      font-size: 14px;
+
+      &.active, &.nuxt-link-exact-active {
+        color: var(--text-color-highlight-primary);
+      }
+    }
+  }
+
+  &__languages {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  &__language-item {
+    padding: 0 5px;
+
+    img {
+      width: 28px;
+      height: auto;
+      border: 1px solid transparent;
+    }
+
+    & > .active, & > .nuxt-link-exact-active {
+      img {
+        border: 1px solid var(--text-color-highlight-primary);
+      }
+    }
+  }
+}

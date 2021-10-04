@@ -1,0 +1,49 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 40px 20px;
+  margin: 0;
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    column-gap: 20px;
+  }
+}
+
+.section {
+  &__title {
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+
+  &__description {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0;
+    padding: 10px 0;
+
+    strong {
+      color: var(--text-color-highlight-primary);
+    }
+  }
+
+  &__hint {
+    font-size: 12px;
+
+    a {
+      text-decoration: none;
+      color: var(--text-color-primary);
+    }
+  }
+}
+
+@media all and (min-width: 768px) {
+  .content {
+    margin: 0 0 0 400px;
+  }
+}

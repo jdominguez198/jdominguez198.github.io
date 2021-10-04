@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Mono', sans-serif;
+  background: var(--background-color-primary);
+  color: var(--text-color-primary);
+  scroll-behavior: smooth;
+}
+
+body, html, #__nuxt, #__layout {
+  position: relative;
+  height: 100vh;
+  min-height: 100%;
+}

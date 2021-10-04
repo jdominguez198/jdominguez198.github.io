@@ -1,0 +1,83 @@
+.my-profile {
+  display: flex;
+  flex-direction: column;
+
+  &__avatar {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    margin: 0 0 20px 0;
+
+    img {
+      width: 120px;
+      height: auto;
+      border: 1px solid transparent;
+      border-radius: 100%;
+    }
+  }
+
+  &__role {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 0 20px 0;
+  }
+
+  &__name, &__role-name {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__name {
+    font-size: 20px;
+  }
+
+  &__role-name {
+    color: var(--text-color-highlight-primary);
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__social-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__social-item {
+    margin: 0;
+    padding: 0 10px;
+
+    a {
+      font-size: 28px;
+      color: var(--text-color-primary);
+    }
+  }
+}
+
+@media all and (min-width: 768px) {
+  .my-profile {
+    &__avatar {
+      img {
+        width: 200px;
+      }
+    }
+    &__role {
+      font-size: 32px;
+    }
+
+    &__role-name {
+      font-size: 18px;
+    }
+  }
+}

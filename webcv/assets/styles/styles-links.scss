@@ -1,0 +1,261 @@
+@import "./_colors.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Mono', sans-serif;
+  background: var(--background-color-primary);
+  color: var(--text-color-primary);
+}
+
+body, html, #__nuxt, #__layout {
+  height: 100%;
+  min-height: 100%;
+}
+
+.page-container {
+  display: flex;
+  height: 100%;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box-container {
+  display: flex;
+  flex: 1 0 100%;
+  max-width: 1200px;
+}
+
+.header, .content, .footer {
+  display: flex;
+  justify-content: center;
+}
+
+.header, .footer {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 10px 0;
+
+      a {
+        text-decoration: none;
+        color: var(--text-color-primary);
+      }
+
+      &.active {
+        a {
+          color: var(--text-color-highlight-primary);
+        }
+      }
+    }
+  }
+}
+
+.header {
+  &__wrapper {
+    justify-content: flex-end;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      li {
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+.content {
+  padding: 20px 0;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 40% auto;
+    grid-template-areas:
+      "my-profile my-profile"
+      "about-me about-me"
+      "education experience"
+    ;
+    row-gap: 40px;
+    column-gap: 20px;
+  }
+}
+
+.section {
+  padding: 20px 15px;
+  margin: 0;
+  background: var(--background-color-inner-primary);
+  border-radius: 10px;
+
+  &__title {
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+}
+
+.my-profile {
+  display: flex;
+  flex-direction: row;
+  grid-area: my-profile;
+
+  &__avatar {
+    display: flex;
+    width: 200px;
+
+    img {
+      width: 100%;
+      height: auto;
+      border: 1px solid transparent;
+      border-radius: 100%;
+    }
+  }
+
+  &__role {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+  }
+
+  &__name, &__role-name {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__role-name {
+    color: var(--text-color-highlight-primary);
+    font-size: 20px;
+    font-weight: 300;
+  }
+}
+
+.about-me {
+  grid-area: about-me;
+
+  &__description {
+    font-weight: 100;
+  }
+
+  &__highlights {
+    display: flex;
+    flex-direction: column;
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      li {
+        font-weight: 100;
+
+        strong {
+          font-weight: 400;
+          color: var(--text-color-highlight-primary);
+          margin: 0 10px 0 0;
+        }
+      }
+    }
+  }
+}
+
+.education {
+  grid-area: education;
+}
+
+.experience {
+  grid-area: experience;
+}
+
+.timeline {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
+  }
+}
+
+.event {
+  padding: 10px 20px;
+  margin: 0 0 10px 0;
+  border-left: 2px solid var(--text-color-highlight-primary);
+
+  &__title {
+    position: relative;
+    font-weight: 300;
+
+    &::before {
+      position: absolute;
+      top: 2px;
+      left: -31px;
+      content: ' ';
+      height: 15px;
+      width: 15px;
+      border: 2px solid var(--text-color-highlight-primary);
+      border-radius: 15px;
+      background: var(--background-color-inner-primary);
+    }
+
+    &::after {
+      position: absolute;
+      top: 10px;
+      left: -13px;
+      content: ' ';
+      height: 2px;
+      width: 10px;
+      background: var(--text-color-highlight-primary);
+    }
+  }
+
+  &__subtitle {
+    font-weight: 100;
+    color: var(--text-color-highlight-primary);
+  }
+
+  &__content {
+    font-weight: 100;
+  }
+}
+
+.footer {
+
+  &__wrapper {
+    justify-content: space-between;
+  }
+
+  &__copyright {
+    &-text {
+      font-size: 12px;
+      font-weight: 300;
+    }
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      li {
+        margin: 0 5px;
+      }
+    }
+  }
+}

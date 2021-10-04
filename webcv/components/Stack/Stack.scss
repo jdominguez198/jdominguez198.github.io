@@ -1,0 +1,32 @@
+.stack {
+  display: flex;
+  flex: 0;
+  flex-direction: row;
+  align-items: center;
+  background: #444;
+  padding: 5px 10px;
+  margin: 0 0 5px 0;
+  border-radius: 5px;
+
+  &-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__icon {
+    color: var(--text-color-highlight-primary);
+  }
+
+  &__label {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin: 0 0 0 5px;
+    white-space: nowrap;
+  }
+
+  & + .stack {
+    margin: 0 0 5px 5px;
+  }
+}
