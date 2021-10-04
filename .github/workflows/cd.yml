@@ -22,17 +22,21 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-webcv-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-webcv-
 
-#      - name: Install dependencies
-#        working-directory: ${{ env.working-directory }}
-#        run: yarn install --ignore-scripts
+      - name: Install dependencies
+        working-directory: ${{ env.working-directory }}
+        run: yarn install --ignore-scripts
 
       - name: Generate
         working-directory: ${{ env.working-directory }}
