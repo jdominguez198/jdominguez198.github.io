@@ -6,7 +6,14 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head () {
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
+    const i18nHead = typeof this.$nuxtI18nHead === 'function'
+      && this.$nuxtI18nHead({ addSeoAttributes: true })
+      || {
+        htmlAttrs: {},
+        meta: [],
+        link: []
+      }
+    ;
 
     return {
       title: 'Jesus Dominguez - Team Lead & Senior Developer',
