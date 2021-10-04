@@ -23,16 +23,16 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Install dependencies
-        working-directory: ${{env.working-directory}}
+        working-directory: ${{ env.working-directory }}
         run: yarn install --ignore-scripts
 
       - name: Generate
-        working-directory: ${{env.working-directory}}
+        working-directory: ${{ env.working-directory }}
         run: yarn run generate
         env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          RECAPTCHA_SITE_KEY: ${{secrets.RECAPTCHA_SITE_KEY}}
-          CMS_API_KEY: ${{secrets.CMS_API_KEY}}
+          GH_TOKEN: ${{ env.GH_TOKEN }}
+          RECAPTCHA_SITE_KEY: ${{ env.RECAPTCHA_SITE_KEY }}
+          CMS_API_KEY: ${{ env.CMS_API_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
