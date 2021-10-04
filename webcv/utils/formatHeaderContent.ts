@@ -4,7 +4,7 @@ const formatHeaderContent = (resultData: any) => {
   return {
     name,
     role,
-    avatar: avatar.filename,
+    avatar: avatar.filename.replace('//a.storyblok.com/', '//img2.storyblok.com/220x0/'),
     socialLinks: socialLinks.map((item: any) => {
       return {
         label: item.label,

@@ -29,16 +29,6 @@ export default {
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;700&display=swap'
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap'
-        },
         ...i18nHead.link
       ]
     }
@@ -62,6 +52,18 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    // https://google-fonts.nuxtjs.org/setup
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          Roboto: [ 100, 300, 400 ],
+          'Roboto+Mono': [ 100, 300, 400 ]
+        },
+        display: 'swap',
+        download: true
+      }
+    ],
     // https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
   ],
