@@ -21,6 +21,7 @@
       />
       <Copyright />
     </header>
+    <Nuxt name="header" />
     <Nuxt />
   </div>
 </template>
@@ -29,6 +30,22 @@ import Vue from 'vue';
 import formatHeaderContent from '~/utils/formatHeaderContent';
 
 export default Vue.extend({
+  async fetch () {
+    const version = this.$route.query._storyblok || this.isDev ? 'draft' : 'published';
+
+    try {
+      const result = await this.$storyapi.get('cdn/stories/header', {
+        version,
+        language: this.$i18n.locale
+      });
+
+      this.pageEditable = { content: { _editable: result.data.story.content._editable } };
+      this.pageID = result.data.story.id;
+      this.setContent(formatHeaderContent(result));
+    } catch(err) {
+      console.error('SBERROR: ', err);
+    }
+  },
   computed: {
     links () {
       return [
@@ -51,22 +68,6 @@ export default Vue.extend({
       role: '',
       avatar: '',
       socialLinks: []
-    }
-  },
-  async created () {
-    const version = this.$route.query._storyblok || this.isDev ? 'draft' : 'published';
-
-    try {
-      const result = await this.$storyapi.get('cdn/stories/header', {
-        version,
-        language: this.$i18n.locale
-      });
-
-      this.pageEditable = { content: { _editable: result.data.story.content._editable } };
-      this.pageID = result.data.story.id;
-      this.setContent(formatHeaderContent(result));
-    } catch(err) {
-      console.error('SBERROR: ', err);
     }
   },
   mounted () {

@@ -72,7 +72,7 @@ export default Vue.extend({
       }
     }
   },
-  async created () {
+  async fetch () {
     const version = this.$route.query._storyblok || this.isDev ? 'draft' : 'published';
 
     try {
