@@ -85,54 +85,10 @@ export default {
             icons: ['fas']
           },
           {
-            set: '@fortawesome/free-regular-svg-icons',
-            icons: ['far']
-          },
-          {
             set: '@fortawesome/free-brands-svg-icons',
             icons: ['fab']
           }
         ]
-      }
-    ],
-    // https://github.com/lindsaykwardell/nuxt-github-api
-    [
-      'nuxt-github-api',
-      {
-        token: process.env.GH_TOKEN,
-        graphQLQuery: `
-          query GetUser($login: String!) {
-            user(login: $login) {
-              avatarUrl
-              pinnedItems(first: 6, types: [REPOSITORY]) {
-                totalCount
-                edges {
-                  node {
-                    ... on Repository {
-                      name
-                      description
-                      url
-                      languages(first: 6) {
-                        totalCount
-                        edges {
-                          node {
-                            ... on Language {
-                              name
-                              color
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          login: 'jdominguez198'
-        }
       }
     ],
     // https://github.com/nuxt-community/recaptcha-module

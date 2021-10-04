@@ -6,7 +6,7 @@
           <fa v-if="lastProjects.titleIcon" :icon="['fas', lastProjects.titleIcon ]" />
           {{ lastProjects.title }}
         </h3>
-        <Repositories :items="projects" />
+        <Repositories :items="lastProjects.repositories" />
       </section>
       <section class="section section__technologies">
         <h3 class="section__title">
@@ -21,7 +21,6 @@
 <script>
 import Vue from 'vue'
 import formatWhatIDoContent from '~/utils/formatWhatIDoContent';
-import formatWhatIDoRepositories from '~/utils/formatWhatIDoRepositories';
 
 export default Vue.extend({
   data() {
@@ -30,18 +29,14 @@ export default Vue.extend({
       pageEditable: null,
       lastProjects: {
         title: '',
-        titleIcon: null
+        titleIcon: null,
+        repositories: []
       },
       myStack: {
         title: '',
         titleIcon: null,
         technologies: []
       }
-    }
-  },
-  computed: {
-    projects () {
-      return formatWhatIDoRepositories(this.$github.user.pinnedItems.edges);
     }
   },
   async created () {
@@ -58,6 +53,7 @@ export default Vue.extend({
       const parsed = formatWhatIDoContent(result.data.story.content);
       this.lastProjects.title = parsed.lastProjectsTitle;
       this.lastProjects.titleIcon = parsed.lastProjectsTitleIcon;
+      this.lastProjects.repositories = parsed.lastProjectsRepositories;
       this.myStack.title = parsed.myStackTitle;
       this.myStack.titleIcon = parsed.myStackTitleIcon;
       this.myStack.technologies = parsed.myStackTechnologies;
@@ -81,6 +77,7 @@ export default Vue.extend({
             const parsed = formatWhatIDoContent(event.story.content);
             this.lastProjects.title = parsed.lastProjectsTitle;
             this.lastProjects.titleIcon = parsed.lastProjectsTitleIcon;
+            this.lastProjects.repositories = parsed.lastProjectsRepositories;
             this.myStack.title = parsed.myStackTitle;
             this.myStack.titleIcon = parsed.myStackTitleIcon;
             this.myStack.technologies = parsed.myStackTechnologies;

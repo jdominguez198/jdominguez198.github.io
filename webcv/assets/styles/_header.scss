@@ -44,6 +44,10 @@
     left: 0;
     width: 400px;
 
+    &__toggle {
+      display: none;
+    }
+
     &__close {
       display: none;
     }

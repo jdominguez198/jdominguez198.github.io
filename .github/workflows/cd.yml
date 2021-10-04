@@ -10,27 +10,34 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-20.04]
         node: [14]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Setup node env
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install dependencies
-        working-directory: ${{ env.working-directory }}
-        run: yarn install --ignore-scripts
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+#      - name: Install dependencies
+#        working-directory: ${{ env.working-directory }}
+#        run: yarn install --ignore-scripts
 
       - name: Generate
         working-directory: ${{ env.working-directory }}
         run: yarn run generate
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           RECAPTCHA_SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
           CMS_API_KEY: ${{ secrets.CMS_API_KEY }}
 

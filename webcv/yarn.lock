@@ -8203,11 +8203,6 @@ nuxt-fontawesome@^0.4.0:
     "@fortawesome/fontawesome-svg-core" "^1.2.12"
     "@fortawesome/vue-fontawesome" "^0.1.4"
 
-nuxt-github-api@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/nuxt-github-api/-/nuxt-github-api-0.1.6.tgz#2273adf9485c2fac6d4328268cbf13ad775bd287"
-  integrity sha512-ZsLRwqadrSY3OJ9zdbGCKhRE7dDVl9eD/zlqX3kDn/KVi9DANgVvaimbTlkxL7xQELMY+1m4dlhLB7OVVDXbKw==
-
 nuxt@^2.15.7:
   version "2.15.8"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.15.8.tgz#946cba46bdaaf0e3918aa27fd9ea0fed8ed303b0"
