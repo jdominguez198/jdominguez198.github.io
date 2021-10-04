@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/es/lo-que-hago", {data:[{}],fetch:{},mutations:void 0});
