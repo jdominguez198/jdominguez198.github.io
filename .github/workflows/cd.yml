@@ -1,6 +1,11 @@
 name: cd
 
-on: [push, pull_request]
+on:
+  push
+  pull_request
+  repository_dispatch:
+    types:
+      - static_build
 
 jobs:
   cd:
