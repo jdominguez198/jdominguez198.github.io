@@ -23,7 +23,7 @@ export default {
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: '' },
+        { hid: 'description', name: 'description', content: 'Site for showing my up-to-date profile as Team Lead & Senior Developer, and my projects made with PHP, JavaScript, NodeJS, VueJS, ReactJS, or for using Infrastructure as a Code with AWS and Terraform' },
         { name: 'format-detection', content: 'telephone=no' },
         ...i18nHead.meta
       ],
