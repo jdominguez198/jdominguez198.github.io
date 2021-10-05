@@ -120,6 +120,13 @@ export default {
           threshold: 8192,
         },
       },
+    ],
+    [
+      'nuxt-lazy-load',
+      {
+        directiveOnly: false,
+        defaultImage: '/lazy_placeholder.png',
+      }
     ]
   ],
 

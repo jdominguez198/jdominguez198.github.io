@@ -13,7 +13,7 @@
           v-for="socialLink of socialLinks"
           :key="socialLink.label"
           class="my-profile__social-item"
-        ><a :href="socialLink.link" target="_blank" rel="noopener"><fa :icon="socialLink.icon" /></a></li>
+        ><a :href="socialLink.link" target="_blank" :title="socialLink.label" rel="noopener"><fa :icon="socialLink.icon" /></a></li>
       </ul>
     </div>
   </div>
