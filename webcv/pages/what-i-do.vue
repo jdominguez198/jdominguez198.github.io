@@ -23,6 +23,35 @@ import Vue from 'vue'
 import formatWhatIDoContent from '~/utils/formatWhatIDoContent';
 
 export default Vue.extend({
+  async asyncData (context) {
+    const version = context.query._storyblok || context.isDev ? 'draft' : 'published';
+
+    try {
+      const result = await context.app.$storyapi.get('cdn/stories/what-i-do', {
+        version,
+        language: context.app.i18n.locale
+      });
+
+      const parsed = formatWhatIDoContent(result.data.story.content);
+
+      return {
+        pageEditable: { content: { _editable: result.data.story.content._editable } },
+        pageID: result.data.story.id,
+        lastProjects: {
+          title: parsed.lastProjectsTitle,
+          titleIcon: parsed.lastProjectsTitleIcon,
+          repositories: parsed.lastProjectsRepositories
+        },
+        myStack: {
+          title: parsed.myStackTitle,
+          titleIcon: parsed.myStackTitleIcon,
+          technologies: parsed.myStackTechnologies
+        }
+      }
+    } catch(err) {
+      console.error('SBERROR: ', err);
+    }
+  },
   data() {
     return {
       pageID: null,
@@ -37,28 +66,6 @@ export default Vue.extend({
         titleIcon: null,
         technologies: []
       }
-    }
-  },
-  async fetch () {
-    const version = this.$route.query._storyblok || this.isDev ? 'draft' : 'published';
-
-    try {
-      const result = await this.$storyapi.get('cdn/stories/what-i-do', {
-        version,
-        language: this.$i18n.locale
-      });
-
-      this.pageEditable = { content: { _editable: result.data.story.content._editable } };
-      this.pageID = result.data.story.id;
-      const parsed = formatWhatIDoContent(result.data.story.content);
-      this.lastProjects.title = parsed.lastProjectsTitle;
-      this.lastProjects.titleIcon = parsed.lastProjectsTitleIcon;
-      this.lastProjects.repositories = parsed.lastProjectsRepositories;
-      this.myStack.title = parsed.myStackTitle;
-      this.myStack.titleIcon = parsed.myStackTitleIcon;
-      this.myStack.technologies = parsed.myStackTechnologies;
-    } catch(err) {
-      console.error('SBERROR: ', err);
     }
   },
   mounted () {

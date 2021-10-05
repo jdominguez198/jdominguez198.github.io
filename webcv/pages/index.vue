@@ -45,6 +45,46 @@ import Vue from 'vue'
 import formatResumeContent from '~/utils/formatResumeContent';
 
 export default Vue.extend({
+  async asyncData (context) {
+    const version = context.query._storyblok || context.isDev ? 'draft' : 'published';
+
+    try {
+      const result = await context.app.$storyapi.get('cdn/stories/resume', {
+        version,
+        language: context.app.i18n.locale
+      });
+
+      const parsed = formatResumeContent(result.data.story.content);
+
+      return {
+        pageEditable: { content: { _editable: result.data.story.content._editable } },
+        pageID: result.data.story.id,
+        aboutMe: {
+          title: parsed.aboutMeTitle,
+          titleIcon: parsed.aboutMeTitleIcon,
+          description: parsed.aboutMeDescription,
+          highlights: parsed.aboutMeHighlights
+        },
+        education: {
+          title: parsed.educationTitle,
+          titleIcon: parsed.educationTitleIcon,
+          timeline: parsed.educationTimeline
+        },
+        experience: {
+          title: parsed.experienceTitle,
+          titleIcon: parsed.experienceTitleIcon,
+          timeline: parsed.experienceTimeline
+        },
+        certificates: {
+          title: parsed.certificatesTitle,
+          titleIcon: parsed.certificatesTitleIcon,
+          items: parsed.certificatesItems
+        }
+      }
+    } catch(err) {
+      console.error('SBERROR: ', err);
+    }
+  },
   data () {
     return {
       pageID: null,
@@ -70,36 +110,6 @@ export default Vue.extend({
         titleIcon: null,
         items: []
       }
-    }
-  },
-  async fetch () {
-    const version = this.$route.query._storyblok || this.isDev ? 'draft' : 'published';
-
-    try {
-      const result = await this.$storyapi.get('cdn/stories/resume', {
-        version,
-        language: this.$i18n.locale
-      });
-
-      this.pageEditable = { content: { _editable: result.data.story.content._editable } };
-      this.pageID = result.data.story.id;
-
-      const parsed = formatResumeContent(result.data.story.content);
-      this.aboutMe.title = parsed.aboutMeTitle;
-      this.aboutMe.titleIcon = parsed.aboutMeTitleIcon;
-      this.aboutMe.description = parsed.aboutMeDescription;
-      this.aboutMe.highlights = parsed.aboutMeHighlights;
-      this.education.title = parsed.educationTitle;
-      this.education.titleIcon = parsed.educationTitleIcon;
-      this.education.timeline = parsed.educationTimeline;
-      this.experience.title = parsed.experienceTitle;
-      this.experience.titleIcon = parsed.experienceTitleIcon;
-      this.experience.timeline = parsed.experienceTimeline;
-      this.certificates.title = parsed.certificatesTitle;
-      this.certificates.titleIcon = parsed.certificatesTitleIcon;
-      this.certificates.items = parsed.certificatesItems;
-    } catch(err) {
-      console.error('SBERROR: ', err);
     }
   },
   mounted () {
