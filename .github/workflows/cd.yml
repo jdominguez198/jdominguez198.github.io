@@ -1,8 +1,9 @@
 name: cd
 
 on:
-  push
-  pull_request
+  push:
+    branches:
+      - master
   repository_dispatch:
     types:
       - static_build
