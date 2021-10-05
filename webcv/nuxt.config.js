@@ -124,7 +124,7 @@ export default {
   ],
 
   i18n: {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: process.env.SITE_URL && `https://${process.env.SITE_URL}` || 'http://localhost:3000',
     locales: [
       {
         code: 'en',
