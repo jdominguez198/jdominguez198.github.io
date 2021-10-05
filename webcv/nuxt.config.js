@@ -84,11 +84,18 @@ export default {
         imports: [
           {
             set: '@fortawesome/free-solid-svg-icons',
-            icons: ['fas']
+            icons: [
+              'faTimes', 'faBars', 'faInfo', 'faGraduationCap', 'faLaptopCode', 'faMedal', 'faMapMarker',
+              'faBirthdayCake', 'faWrench', 'faCodeBranch'
+            ]
           },
           {
             set: '@fortawesome/free-brands-svg-icons',
-            icons: ['fab']
+            icons: [
+              'faGithub', 'faLinkedin', 'faTwitter', 'faGit', 'faPhp', 'faLaravel', 'faJs', 'faMagento',
+              'faVuejs', 'faNodeJs', 'faAngular', 'faHtml5', 'faCss3Alt', 'faWordpress',
+              'faReact', 'faDocker', 'faAws', 'faGoogle'
+            ]
           }
         ]
       }
@@ -102,6 +109,17 @@ export default {
         accessToken: process.env.CMS_API_KEY,
         cacheProvider: 'memory'
       }
+    ],
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          threshold: 8192,
+        },
+        brotli: {
+          threshold: 8192,
+        },
+      },
     ]
   ],
 
@@ -163,6 +181,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    analyze: true,
   },
 
   publicRuntimeConfig: {
