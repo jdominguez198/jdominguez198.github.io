@@ -15,6 +15,7 @@ const formatWhatIDoContent = (content: any) => {
       return {
         id: repository._uid,
         name: repository.name,
+        url: repository.url.url || '',
         languages: repository.languages.map((language: any) => {
           return {
             id: language._uid,

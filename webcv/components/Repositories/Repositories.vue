@@ -3,7 +3,7 @@
     <ul class="repositories__list">
       <li
         v-for="item of items"
-        :key="item.name"
+        :key="item.id"
         class="repositories__list-item"
       >
         <a class="repositories__list-item-link" :href="item.url" target="_blank">
